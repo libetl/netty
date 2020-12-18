@@ -114,6 +114,7 @@ public abstract class HttpObjectEncoder<H extends HttpMessage> extends MessageTo
             final ByteBuf potentialEmptyBuf = (ByteBuf) msg;
             if (!potentialEmptyBuf.isReadable()) {
                 out.add(potentialEmptyBuf.retain());
+                state = ST_INIT;
                 return;
             }
         }
